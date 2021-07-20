@@ -1,0 +1,55 @@
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| employee_language  |
+| mysql              |
+| payroll_service    |
+| student            |
+| student_manage     |
+| test               |
++--------------------+
+7 rows in set (0.01 sec)
+
+mysql> use payroll_service;
+Database changed
+mysql> desc address_book1;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| firstName   | varchar(10) | YES  |     | NULL    |       |
+| lastName    | varchar(10) | YES  |     | NULL    |       |
+| address     | varchar(10) | YES  |     | NULL    |       |
+| city        | varchar(10) | YES  |     | NULL    |       |
+| state       | varchar(10) | YES  |     | NULL    |       |
+| zip         | int(11)     | YES  |     | NULL    |       |
+| phoneNumber | int(10)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.02 sec)
+
+mysql> insert into address_book1 values("RAJ","KUMAR","JHARKHAND","RANCHI","JHARKHAND",'822123','123456780');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from address_book1;
++-----------+----------+-----------+----------+-----------+--------+-------------+
+| firstName | lastName | address   | city     | state     | zip    | phoneNumber |
++-----------+----------+-----------+----------+-----------+--------+-------------+
+| RAJ       | KUMAR    | BANGLORE  | BANGLORE | KARNATKA  |  53011 |   123456789 |
+| RAJ       | KUMAR    | JHARKHAND | RANCHI   | JHARKHAND | 822123 |   123456780 |
++-----------+----------+-----------+----------+-----------+--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> update address_book1 set firstName='MOHAN' where address='JHARKHAND';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book1;
++-----------+----------+-----------+----------+-----------+--------+-------------+
+| firstName | lastName | address   | city     | state     | zip    | phoneNumber |
++-----------+----------+-----------+----------+-----------+--------+-------------+
+| RAJ       | KUMAR    | BANGLORE  | BANGLORE | KARNATKA  |  53011 |   123456789 |
+| MOHAN     | KUMAR    | JHARKHAND | RANCHI   | JHARKHAND | 822123 |   123456780 |
++-----------+----------+-----------+----------+-----------+--------+-------------+
+2 rows in set (0.00 sec)
